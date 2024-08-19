@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Generator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #license {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>License Generator</h1>
+    <button onclick="generateLicense('7')">7 Days</button>
+    <button onclick="generateLicense('15')">15 Days</button>
+    <button onclick="generateLicense('25')">25 Days</button>
+    <button onclick="generateLicense('lifetime')">Lifetime</button>
+    <div id="license"></div>
+
+    <script>
+        function generateLicense(days) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let licenseKey = '';
+            for (let i = 0; i < 8; i++) {
+                licenseKey += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            const license = `${days}day-${licenseKey}`;
+            document.getElementById('license').textContent = license;
+        }
+    </script>
+</body>
+</html>
